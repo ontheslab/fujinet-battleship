@@ -5,7 +5,7 @@
  */
 
 #include "../misc.h"
-#define BIN_TYPE BIN_CPM
+#define BIN_TYPE BIN_NABU
 #define FONT_CP437
 #define DISABLE_KEYBOARD_INT
 #include "cp437_patterns.h"

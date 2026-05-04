@@ -1,3 +1,7 @@
+/*
+  Apple II Joystick
+*/
+
 #include <apple2.h>
 #include <joystick.h>
 

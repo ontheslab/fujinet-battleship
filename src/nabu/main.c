@@ -339,6 +339,8 @@ static void set_gameplay_ui_message(void)
         set_ui_message(last_result_owner == RESULT_OWNER_LOCAL ? "YOU HIT!" :
                        last_result_owner == RESULT_OWNER_REMOTE ? "THEY HIT!" :
                        "HIT!");
+		soundHit();
+		if (last_result_owner == RESULT_OWNER_LOCAL) soundYouHit(); else soundTheyHit();
         return;
     }
 
@@ -346,6 +348,8 @@ static void set_gameplay_ui_message(void)
         set_ui_message(last_result_owner == RESULT_OWNER_LOCAL ? "YOU MISS" :
                        last_result_owner == RESULT_OWNER_REMOTE ? "THEY MISS" :
                        "MISS");
+		soundMiss();
+		if (last_result_owner == RESULT_OWNER_LOCAL) soundYouMiss(); else soundTheyMiss();
         return;
     }
 
@@ -353,6 +357,7 @@ static void set_gameplay_ui_message(void)
         set_ui_message(last_result_owner == RESULT_OWNER_LOCAL ? "YOU SUNK!" :
                        last_result_owner == RESULT_OWNER_REMOTE ? "THEY SUNK!" :
                        "SUNK!");
+		if (last_result_owner == RESULT_OWNER_LOCAL) soundYouSunk(); else soundTheySunk();
         return;
     }
 
@@ -990,10 +995,10 @@ static uint8_t redraw_gameplay_delta(const Game *old_game)
             drawGamefieldCursor(1, aim_x, aim_y, clientState.game.players[new_target].gamefield, 0);
     }
 
-    if (hit_changed)
+    /* if (hit_changed)
         soundHit();
     else if (miss_changed)
-        soundMiss();
+        soundMiss(); */
 
     return 1;
 }
